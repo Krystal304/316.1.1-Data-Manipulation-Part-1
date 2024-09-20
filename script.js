@@ -92,3 +92,21 @@ subMenuEl.getElementById(`sub-menu`).style.position = `absolute`;
 
 // Set the CSS top property of subMenuEl to the value of 0.
 subMenuEl.getElementById(`sub-menu`).style.top = 0;
+
+// Select and cache the all of the <a> elements inside of topMenuEl in a variable named topMenuLinks.
+
+let topMenuLinks = document.querySelectorAll(`a`)
+
+
+// Attach a delegated 'click' event listener to topMenuEl.
+function handleClick(event) {
+// The first line of code of the event listener function should call the event object's preventDefault() method.
+    event.preventDefault();
+
+// The second line of code of the function should immediately return if the element clicked was not an <a> element.
+    
+
+// Log the content of the <a> to verify the handler is working.cBtn.addEventListener(`click`, callback);
+
+    consol
+}
