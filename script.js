@@ -69,14 +69,14 @@ topMenuEl.appendChild(newLink);
 });
 
 // Part 3
-// Select and cache the <nav id="sub-menu"> element in a variable named subMenuEl.
-let subMenuEl = document.getElementById('sub-menu');
+// Select and cache the <nav id="subLinks-menu"> element in a variable named subMenuEl.
+let subMenuEl = document.getElementById('subLinks-menu');
 
 // Set the height subMenuEl element to be "100%".
 subMenuEl.style.height = '100%';
 
-// Set the background color of subMenuEl to the value stored in the --sub-menu-bg CSS custom property.
-subMenuEl.style.backgroundColor = (`var(--sub-menu-bg)`);
+// Set the background color of subMenuEl to the value stored in the --subLinks-menu-bg CSS custom property.
+subMenuEl.style.backgroundColor = (`var(--subLinks-menu-bg)`);
 
 
 // Add the class of flex-around to the subMenuEl element
@@ -116,4 +116,39 @@ for (i = 0; i < topMenuLinks.length; i++){
   topMenuLinks[i].classList.remove('active');
 }
 event.target.classList.add('active');
+}
+
+// Within the event listener, if the clicked <a> element does not yet have a class of "active" (it was inactive when clicked):
+
+let clickedLinkText = event.target.textContent;
+let linkObject = menuLinks.find (link => link.text === clickedLinktext);
+
+// If the clicked <a> element's "link" object within menuLinks has a subLinks property (all do, except for the "link" object for ABOUT), set the CSS top property of subMenuEl to 100%.
+if (linkObject && linkObject.subLinks){
+  subMenuEl.style.top = '100';
+
+} else { 
+  subMenuEl.style.top = '0';
+}
+// Otherwise, set the CSS top property of subMenuEl to 0.
+// Hint: Caching the "link" object will come in handy for passing its subLinks array later.
+
+
+// Clear the current contents of subMenuEl.
+function buildSubmenu(subLinks){
+  subMenuEl.innerHTML = '';
+
+// Iterate over the subLinks array, passed as an argument, and for each "link" object:
+subLinks.forEach(link => {
+
+// Create an <a> element.
+let subLink = document.creatElement('a');
+})
+// Add an href attribute to the <a>, with the value set by the href property of the "link" object.
+subLink.setAttribute('href', link.href);
+
+// Set the element's content to the value of the text property of the "link" object.
+sublink.textContent = link.text;
+// Append the new element to the subMenuEl.
+subMenuEl.appendChild(subLink);
 }
