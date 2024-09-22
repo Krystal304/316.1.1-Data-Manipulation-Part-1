@@ -70,69 +70,50 @@ topMenuEl.appendChild(newLink);
 
 // Part 3
 // Select and cache the <nav id="sub-menu"> element in a variable named subMenuEl.
-// let subMenuEl = document.getElementById('sub-menu');
+let subMenuEl = document.getElementById('sub-menu');
 
 // Set the height subMenuEl element to be "100%".
-// subMenuEl.style.height = '100%';
+subMenuEl.style.height = '100%';
 
 // Set the background color of subMenuEl to the value stored in the --sub-menu-bg CSS custom property.
-// subMenuEl.style.backgroundColor = (`var(--sub-menu-bg)`);
+subMenuEl.style.backgroundColor = (`var(--sub-menu-bg)`);
 
 
 // Add the class of flex-around to the subMenuEl element
-// subMenuEl.classList.add(`flex-around`);
+subMenuEl.classList.add(`flex-around`);
 
 // Set the CSS position property of subMenuEl to the value of absolute.
-// subMenuEl.style.position = `absolute`;
+subMenuEl.style.position = `absolute`;
 
 // Set the CSS top property of subMenuEl to the value of 0.
-// subMenuEl.style.top = 0;
+subMenuEl.style.top = 0;
 
 
 // Part 4
 // Select and cache the all of the <a> elements inside of topMenuEl in a variable named topMenuLinks.
-let topMenuLinks = topMenuEl.querySelectorAll(`a`);
+// get all a tags
+ let topMenuLinks = topMenuEl.getElementsByTagName('a');
+
 
 
 // Attach a delegated 'click' event listener to topMenuEl.
-const cBtn = document.getElementById(`myBtn`);
-
-topMenuEl.addEventListener("click", function(event) {
- 
-
+topMenuEl.addEventListener('click', handleClick);
+function handleClick(event) {
 
 // The first line of code of the event listener function should call the event object's preventDefault() method.
-
 event.preventDefault();
 
-
 // The second line of code of the function should immediately return if the element clicked was not an <a> element.
-if (event.target.tagName !== `A`){
-    return;
-}
-// Log the content of the <a> to verify the handler is working.cBtn.addEventListener(`click`, callback);
-console.log(`You clicked the right link`);
-});
+if (event.target.tagName !== 'A') return;
 
-// The event listener should add the active class to the <a> element that was clicked, 
-// unless it was already active, in which case it should remove it.
+// Log the content of the <a> to verify the handler is working.
+console.timeLog(event.target.textContent);
 
-let clickedLink = (e).target;
-topMenuLinks.forEach((link) => {
-    link.classList.remove(`active`);
-
-});
-
-// The event listener should remove the active class from each other <a> element in topMenuLinks 
-// - whether the active class exists or not.
-
+// The event listener should add the active class to the <a> element that was clicked, unless it was already active, in which case it should remove it.
+// The event listener should remove the active class from each other <a> element in topMenuLinks - whether the active class exists or not.
 // Hint: Removing a non-existent class from an element does not cause an error!
-
-// Within the event listener, if the clicked <a> element does not yet have a class of "active" 
-// (it was inactive when clicked):
-// If the clicked <a> element's "link" object within menuLinks 
-// has a subLinks property (all do, except for the "link" object for ABOUT), 
-// set the CSS top property of subMenuEl to 100%.
-// Otherwise, set the CSS top property of subMenuEl to 0.
-// Hint: Caching the "link" object will come in handy for passing its 
-// subLinks array later.
+for (i = 0; i < topMenuLinks.length; i++){
+  topMenuLinks[i].classList.remove('active');
+}
+event.target.classList.add('active');
+}
