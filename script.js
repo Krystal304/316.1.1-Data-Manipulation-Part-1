@@ -152,3 +152,26 @@ sublink.textContent = link.text;
 // Append the new element to the subMenuEl.
 subMenuEl.appendChild(subLink);
 }
+
+// Attach a delegated 'click' event listener to subMenuEl.
+subMenuEl.addEventListener('click', handleSubmenuClick);
+function handleSubmenuClick(event){
+
+
+
+// The first line of code of the event listener function should call the event object's preventDefault() method.
+event.preventDefault();
+// The second line of code within the function should immediately return if the element clicked was not an <a> element.
+if (event.target.tagName !== 'A') return;
+// Log the content of the <a> to verify the handler is working.
+console.log(event.target.textContent);
+// Next, the event listener should set the CSS top property of subMenuEl to 0.
+subMenuEl.style.top = '0'
+// Remove the active class from each <a> element in topMenuLinks.
+for(let i = 0; i < topMenuLinks.length; i++){
+
+}
+// Update the contents of mainEl, within an <h1>, to the contents of the <a> element clicked within subMenuEl.
+mainEl.innerHTML = '<h1>${event.target.textContent}</h1>';
+}
+// If the ABOUT link is clicked, an <h1>About</h1> should be displayed.
